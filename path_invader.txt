@@ -1,0 +1,83 @@
+void find_paths(int srcc,int destt,int matrix2[][MAX],struct paths **p,int count){
+	
+	for(int i=0;i<MAX;i++){
+		
+		if(matrix2[srcc][i]>0){
+		
+			if(i==destt){
+				(*p)->marr[++count][0]=i;
+				(*p)->marr[count][1]=matrix2[srcc][i];
+			  //cout<<i<<" ";//
+			  	matrix2[srcc][i]=0;
+			  	for(int d=i+1;d<MAX;d++){
+			  		if(matrix2[srcc][d]>0){
+			  			struct paths *temp;
+			  			temp=new(struct paths);
+						for(int c=0;c<count;c++){
+							temp->marr[c][0]=(*p)->marr[c][0];
+							temp->marr[c][1]=(*p)->marr[c][1];
+						//	cout<<temp->marr[c][0];//
+						}
+						
+						for(int g=count;g<MAX;g++){
+							temp->marr[g][0]=-1;
+							temp->marr[g][1]=0;
+						}
+						temp->next=NULL;
+						(*p)->next=temp;
+						*p=temp;
+						count--;
+						break;
+					 }
+				}
+			}
+			else{
+			//	cout<<i;//
+				(*p)->marr[++count][0]=i;
+				(*p)->marr[count][1]=matrix2[srcc][i];
+				
+				int matrix3[MAX][MAX];
+				
+				for(int e=0;e<MAX;e++){
+					for(int f=0;f<MAX;f++)
+					matrix3[e][f]=matrix2[e][f];
+				}
+				int matrix4[MAX][2];
+				for(int h=0;h<MAX;h++){
+					for(int o=0;o<2;o++){
+						matrix4[h][o]=(*p)->marr[h][o];
+					}
+				}
+				
+				for(int z=0;z<MAX;z++){
+					matrix3[z][i]=0;
+				}
+				
+				find_paths(i,destt,matrix3,p,count);	
+				matrix2[srcc][i]=0;
+				for(int d=i+1;d<MAX;d++){
+					if(matrix2[srcc][d]>0){
+						struct paths*temp;
+						temp=new(struct paths);
+						cout<<" ";
+						for(int c=0;c<count;c++){
+							temp->marr[c][0]=matrix4[c][0];
+							temp->marr[c][1]=matrix4[c][1];
+							//cout<<temp->marr[c][0];//
+						}
+
+						for(int g=count;g<MAX;g++){
+							temp->marr[g][0]=-1;
+							temp->marr[g][1]=0;
+						}
+						temp->next=NULL;
+						(*p)->next=temp;
+						*p=temp;
+						count--;
+						break;
+					}
+				}
+			}
+		}
+	}
+}

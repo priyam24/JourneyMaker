@@ -1,0 +1,40 @@
+#include<iostream>
+using namespace std;
+
+void displaymap(){
+cout<<"\n=========== MAP ===========\n\n";
+cout<<"          KOLKATA\n";
+cout<<"         /       \\"<<endl;
+cout<<"        /         \\"<<endl;
+cout<<"      12           2"<<endl;
+cout<<"     /               \\"<<endl;
+cout<<"    /                 \\"<<endl;
+cout<<" BEHALA------10------HOWRAH(J/N)"<<endl;
+cout<<"   |   \\           /    |"<<endl;
+cout<<"   |     \\       /      |"<<endl;
+cout<<"   4       7   /        8"<<endl;
+cout<<"   |        \\/          |"<<endl;
+cout<<"   |        / \\         |"<<endl;
+cout<<"   |      6     \\       |"<<endl;
+cout<<"   |    /         \\     |"<<endl;
+cout<<"BURDWAN(J/N)        KALYANI"<<endl;
+cout<<"   |               /    |"<<endl;
+cout<<"   |             /      |"<<endl;
+cout<<"   9           10       8"<<endl;
+cout<<"   |         /          |"<<endl;
+cout<<"   |       /            |"<<endl;
+cout<<"  DURGAPUR----11----BANKURA"<<endl;
+cout<<"   |                /   |"<<endl;
+cout<<"   |              /     |"<<endl;
+cout<<"  13            /       |"<<endl;
+cout<<"   |          12        |"<<endl;
+cout<<"   |        /           14"<<endl;
+cout<<"   |      /             |"<<endl;
+cout<<"   |    /               |"<<endl;
+cout<<"SILIGURI(J/N)---5---MIDNAPUR"<<endl;
+cout<<"      \\             /"<<endl;
+cout<<"        \\         /"<<endl;
+cout<<"         16      6"<<endl;
+cout<<"           \\   /"<<endl;
+cout<<"         DARJEELING"<<endl;
+}

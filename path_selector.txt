@@ -1,0 +1,55 @@
+#include<iostream>
+using namespace std;
+
+struct paths{
+	int marr[MAX][2];
+	struct paths*next;
+};
+
+struct paths* path_selector(struct paths*q,int *sum1,int desti){
+	int sum=0;
+struct paths *store1,*store2;
+while(q!=NULL){
+	sum=0;
+	int j;
+	for(j=0;j<MAX;j++){
+		//cout<<q->marr[j][0]<<" ";//
+		sum=sum+q->marr[j][1];
+		if(q->marr[j][0]==desti)
+		break;
+	}
+	if(j==MAX)
+	j--;
+//	if(q->marr[j][0]==dest)//
+	//cout<<"    \tsum="<<sum;//
+	//cout<<"\n";//
+
+	if((*sum1==-1&&q->marr[j][0]==desti)||(sum<=*sum1&&q->marr[j][0]==desti)){
+			struct paths *temp;
+			temp=new(struct paths);
+			for(int o=0;o<MAX;o++){
+				for(int r=0;r<2;r++){
+					temp->marr[o][r]=q->marr[o][r];
+				}
+			}
+			temp->next=NULL;		
+		if(*sum1==-1||sum<*sum1){
+			*sum1=sum;
+			store1=temp;
+			store2=store1;
+		}
+		else{
+			if(store1==store2){
+				store2=temp;
+				store1->next=store2;				
+			}
+			else{
+				store2->next=temp;
+				store2=temp;
+			}
+		}
+	}
+	q=q->next;
+}
+return store1;
+}
